@@ -1,12 +1,12 @@
 const { Router } = require('express')
 const axios = require("axios")
-const numberOfPictures = 5;
+const numberOfPictures = 1;
 const router = Router();
 
 const fetch = require('node-fetch');
 let pictures = [];
 
-router.get('/', async (req, res) => {
+router.get('/', async (_req, res) => {
     //const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=${numberOfPictures}`)
     //const users = await response.json();
     //console.log(users);
@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
 
 	try {
 		const { data } = await axios.get(
+			//`https://jsonplaceholder.typicode.com/user`
 			`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=${numberOfPictures}`
 		)
 		//const { data } = await fetch(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=${numberOfPictures}`)
@@ -31,7 +32,7 @@ router.get('/', async (req, res) => {
 			})
 		}
 	} catch (error) {
-		console.log("Error getting the pictures from the NASA API\n", error)
+		console.log("Error getting the pictures from the NASA API\n")
 	}
 	res.json(picturess);
 	//return pictures;

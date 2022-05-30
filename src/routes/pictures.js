@@ -1,3 +1,4 @@
+const { useEffect } = require('react');
 const { Router } = require('express')
 const axios = require("axios")
 const numberOfPictures = 2;
@@ -7,14 +8,15 @@ const fetch = require('node-fetch');
 let picturesGlobal = [];
 let idGlobal = 0;
 
-router.get('/', async (_req, res) => {
+router.get('/',  async (_req, res) => {
     //const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=${numberOfPictures}`)
     //const users = await response.json();
     //console.log(users);
     //res.json(users);
 	let pictures = []
+
 	try {
-		const { data } = await axios.get(
+		const { data } =  await axios.get(
 			//`https://jsonplaceholder.typicode.com/user`
 			`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=${numberOfPictures}`
 		)
@@ -37,6 +39,7 @@ router.get('/', async (_req, res) => {
 	idGlobal = pictures.length;
 	//picturesGlobal = pictures.slice();
 });
+
 
 router.post('/', (req, res)=>{
     const {explanation, hdurl, title, url} = req.body;

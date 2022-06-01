@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import pagination from 'mongoose-paginate-v2'
 
 const pictureSchema = new mongoose.Schema({
     explanation: {
@@ -18,5 +19,7 @@ const pictureSchema = new mongoose.Schema({
 		required: true,
 	},
 })
+
+pictureSchema.plugin(pagination)
 
 export default mongoose.model('Picture', pictureSchema)

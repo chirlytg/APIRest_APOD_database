@@ -1,7 +1,7 @@
 import axios from 'axios'
 //const axios = require("axios")
 
-const numberOfPictures = 10
+const numberOfPictures = 100
 
 /* getNasaPictures
 	
